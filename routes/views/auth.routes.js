@@ -1,59 +1,58 @@
-const authRouter = require('express').Router();
+const router = require('express').Router();
 const bcrypt = require('bcrypt');
+const ReactDOMServer = require('react-dom/server');
+const React = require('react');
 const { User } = require('../../db/models');
-const Login = require('../../views/Login');
+
 const Register = require('../../views/Register');
+const Login = require('../../views/Login');
 
-authRouter
-  .route('/register')
-  .get((req, res) => {
-    res.renderComponent(Register);
-  })
-  .post(async (req, res) => {
-    const { name, password } = req.body;
-
-    const existingUser = await User.findOne({ where: { name } });
-    // проверяем есть ли уже такой пользователь в БД
-    if (existingUser) {
-      res.send('Такой пользователь уже есть');
-      return;
-    }
-
-    // создаём нового пользователя
-    const user = await User.create({
-      name,
-      // хэшируем пароль, чтобы не хранить в открытом виде в БД
-      password: await bcrypt.hash(password, 10),
-    });
-
-    // кладём id нового пользователя в хранилище сессии (сразу логиним пользователя)
-    req.session.userId = user.id;
-    res.redirect('/');
-  });
-
-authRouter
-  .route('/login')
-  .get((req, res) => {
-    res.renderComponent(Login);
-  })
-  .post(async (req, res) => {
-    const { name, password } = req.body;
-    const existingUser = await User.findOne({ where: { name } });
-
-    // проверяем, что такой пользователь есть в БД и пароли совпадают
-    if (existingUser && await bcrypt.compare(password, existingUser.password)) {
-      // кладём id нового пользователя в хранилище сессии (логиним пользователя)
-      req.session.userId = existingUser.id;
-      req.session.user = existingUser;
-      res.redirect('/');
-    } else {
-      res.send('Такого пользователя нет либо пароли не совпадают');
-    }
-  });
-
-authRouter.get('/logout', (req, res) => {
-  req.session.destroy();
-  res.redirect('/');
+router.get('/register', (req, res) => {
+  const element = React.createElement(Register, {});
+  const html = ReactDOMServer.renderToStaticMarkup(element);
+  res.write('<!DOCTYPE html>');
+  res.end(html);
 });
 
-module.exports = authRouter;
+router.post('/register', async (req, res) => {
+  const { name, mail, password } = req.body;
+  const existingUser = await User.findOne({ where: { mail } });
+  // проверяем есть ли уже такой пользователь в БД
+  if (existingUser) {
+    res.send('Такой пользователь уже существует.');
+  }
+
+  if (!existingUser) {
+    const user = await User.create({
+      name,
+      mail,
+      password: await bcrypt.hash(password, 10),
+    });
+    // console.log(user);
+    req.session.userId = user.id;
+    // console.log(req.session);
+    res.redirect('/home');
+  }
+});
+
+router.get('/login', (req, res) => {
+  const element = React.createElement(Login, {});
+  const html = ReactDOMServer.renderToStaticMarkup(element);
+  res.write('<!DOCTYPE html>');
+  res.end(html);
+});
+
+router.post('/login', async (req, res) => {
+  const { name, password } = req.body;
+  const existingUser = await User.findOne({ where: { name } });
+
+  if (existingUser && await bcrypt.compare(password, existingUser.password)) {
+    // кладём id нового пользователя в хранилище сессии (логиним пользователя)
+    req.session.userId = existingUser.id;
+    res.redirect('/home');
+  } else {
+    res.send('Неверное имя пользователя или пароль.');
+  }
+});
+
+module.exports = router;
