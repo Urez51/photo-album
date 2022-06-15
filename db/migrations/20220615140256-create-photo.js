@@ -18,6 +18,10 @@ module.exports = {
       album_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'Albums',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
