@@ -6,7 +6,7 @@ function Login() {
     <Layout>
       <form method="POST" action="/auth/login">
         <div className="mb-3">
-          <label htmlFor="name-input" className="form-label">Name</label>
+          <label htmlFor="name-input" className="form-label">Email</label>
           <input type="text" className="form-control" id="name-input" name="name" />
         </div>
         <div className="mb-3">
