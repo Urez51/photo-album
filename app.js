@@ -16,6 +16,7 @@ const photoRouter = require('./routes/views/photo.routes');
 
 const app = express();
 
+const { sequelize } = require('./db/models');
 // функция настройки экспресса
 expressConfig(app);
 
@@ -28,8 +29,6 @@ app.use('/Home', homeRouter) // роутер домашней страницы
 app.use('/album', albumRouter) // роутер на альбомную страницу 1 альбома для работы с альбомом
 app.use('/photo', photoRouter) // роутер для работы с 1 фотографией
 
-
-
 app.use((error, req, res, next) => {
   console.error('Произошла ошибка', error);
   res.status(500).json({
@@ -38,4 +37,16 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(3000, () => 'server started at 3000');
+app.listen(3000, async () => {
+  /* eslint-disable no-console */
+  console.log('Веб-сервер слушает порт', 3000);
+
+  try {
+    await sequelize.authenticate();
+    console.log('БД-сервер подключен успешно');
+  } catch (error) {
+    console.log('БД-сервер не подключен');
+    console.log(error.message);
+  }
+  /* eslint-enable */
+});
