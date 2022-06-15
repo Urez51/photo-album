@@ -9,14 +9,32 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Albums', [{
-      title: 'I am',
-      body: 'hello, its me...',
-      user_id: '1',
-      privat: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    }], {});
+    // await queryInterface.bulkInsert('Albums', [{
+    //   title: 'Выдры',
+    //   body: 'Тут фотки выдр',
+    //   user_id: '5',
+    //   privat: false,
+    //   createdAt: new Date(),
+    //   updatedAt: new Date(),
+    // }], {});
+
+    // await queryInterface.bulkInsert('Albums', [{
+    //   title: 'PHP',
+    //   body: 'помогите...',
+    //   user_id: '3',
+    //   privat: true,
+    //   createdAt: new Date(),
+    //   updatedAt: new Date(),
+    // }], {});
+
+    // await queryInterface.bulkInsert('Albums', [{
+    //   title: 'Сабмитнулся',
+    //   body: 'берёшь и делаешь сабмит',
+    //   user_id: '6',
+    //   privat: true,
+    //   createdAt: new Date(),
+    //   updatedAt: new Date(),
+    // }], {});
   },
 
   async down(queryInterface, Sequelize) {
@@ -26,6 +44,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Albums', null, {});
+    // await queryInterface.bulkDelete('Albums', null, {});
   },
 };
