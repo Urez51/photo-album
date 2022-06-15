@@ -1,9 +1,11 @@
 const express = require('express');
 // const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const path = require('path');
 const getUser = require('../middlewares/getUser');
 const FileStore = require('session-file-store')(session);
 const reactSsrMiddleware = require('../middlewares/reactSsr');
+const morgan = require('morgan');
 
 // Конфигурация сессии
 const sessionConfig = {
@@ -38,6 +40,9 @@ function expressConfig(app) {
   // расшифровывает куки в запросах от клиента
   // app.use(cookieParser());
 
+  // подключаем логирование запросов
+  app.use(morgan('dev'));
+
   // миддлварка для работы с сессиями
   app.use(session(sessionConfig));
 
@@ -45,6 +50,9 @@ function expressConfig(app) {
   app.use(reactSsrMiddleware);
 
   app.use(getUser);
+
+  // миддлварка для работы с фото
+  app.use('/images', express.static(path.join(__dirname, 'images')));
 }
 
 module.exports = expressConfig;
