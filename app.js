@@ -19,7 +19,6 @@ const albumRouter = require('./routes/views/album.routes');
 
 const homeRouter = require('./routes/views/home.router');
 
-const photoRouter = require('./routes/views/photo.routes');
 
 
 const app = express();

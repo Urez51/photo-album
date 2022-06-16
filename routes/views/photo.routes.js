@@ -5,21 +5,19 @@ const { Photo } = require('../../db/models');
 
 const router = Router();
 
-router.get('/',  (req, res) => {
+router.get('/', (req, res) => {
   res.renderComponent(AddPhoto);
 });
 
-router.post('/', fileMiddleware.single('foto'), async (req, res) => {
+router.post('/:id', fileMiddleware.single('foto'), async (req, res) => {
   try {
     if (req.file) {
-      console.log(req.file);
-      console.log(req.file.path);
       const photo = await Photo.create({
         url: req.file.path,
-        title: 'Фото отпад',
-        album_id: 1,
+        title: req.body.title,
+        album_id: req.params.id,
       });
-      console.log(photo);
+      res.status(200);
     }
   } catch (err) {
     console.log(err);

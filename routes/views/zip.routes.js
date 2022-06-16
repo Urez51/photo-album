@@ -42,10 +42,12 @@ router.get('/', (req, res) => {
   res.renderComponent(AddZip);
 });
 
-router.post('/', compressfilesupload.array('file', 100), async (req, res) => {
+router.post('/:id', compressfilesupload.array('file', 100), async (req, res) => {
   try {
     const zip = new admzip();
-    const photo = await Photo.findAll({ raw: true });
+    const id = req.params.id;
+    const photo = await Photo.findAll({ where: { album_id: id }, raw: true });
+    console.log(photo);
 
     // const url = photo.map((el) => el.url);
     // console.log(url);
