@@ -1,0 +1,63 @@
+.masthead {
+  padding-top: 0;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+}
+
+.task {
+  display: flex;
+}
+
+.remove-task {
+  color: white;
+  cursor: pointer;
+}
+
+
+.photos {
+  display: flex;
+  justify-content: space-around;
+}
+
+.photo-links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.delete {
+  color: red;
+}
+
+.done-checkbox {
+}
+.carousel{
+  height: 500px;
+  min-width: 500px;
+}
+.carousel-inner{
+  height: 500px;
+  width: 700px;
+   margin: 10px 25%;
+}
+.carousel-control-next{
+  width: 30px;
+ background-color: rgb(116, 116, 254);
+}
+.carousel-control-prev{
+  width: 30px;
+  background-color: rgb(116, 116, 254);
+}
+.card{
+ width: 18rem;
+} 
+.bodyHome{
+ margin: 10px 20%;
+} 
+.pricol{
+  height: 500px ;
+
+}
+
