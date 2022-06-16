@@ -10,9 +10,9 @@ const mainRouter = require('./routes/views/main.routes');
 const todoRouter = require('./routes/views/tasks.routes');
 const todoApiRouter = require('./routes/api/tasks.routes');
 const authRouter = require('./routes/views/auth.routes');
-// const homeRouter = require('./routes/views/home.routes');
+const homeRouter = require('./routes/views/home.router');
 // const albumRouter = require('./routes/views/album.routes');
- const photoRouter = require('./routes/views/photo.routes');
+const photoRouter = require('./routes/views/photo.routes');
 
 const app = express();
 
@@ -27,8 +27,8 @@ app.use('/tasks', todoRouter); // роутер списка задач (все u
 app.use('/auth', authRouter);
 app.use('/api/tasks', todoApiRouter); // роутер списка задач (все url начинаются с /tasks)
 
-//app.use('/Home', homeRouter) // роутер домашней страницы
-//app.use('/album', albumRouter) // роутер на альбомную страницу 1 альбома для работы с альбомом
+app.use('/Home', homeRouter) // роутер домашней страницы
+//app.use('/album', albumRouter) eроутер на альбомную страницу 1 альбома для работы с альбомом
 app.use('/photo', photoRouter); // роутер для работы с 1 фотографией
 
 
