@@ -18,7 +18,7 @@ router.get('/:album_id', async (req, res) => {
   res.end(html);
 });
 
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   await Photo.destroy({ where: { id: req.params.id } });
   res.send('this photo has deleted');
 });

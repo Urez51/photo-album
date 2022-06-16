@@ -1,7 +1,7 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-function AlbumView({ photos, albumName }) {
+function AlbumAdd({ photos, albumName }) {
   return (
     <Layout>
       <form method="POST" action="/:album_id/add">

@@ -27,8 +27,8 @@ document.querySelector('.photos')
 //     }
 //   });
 
-document.querySelector('.conteiner')
-  .addEventListener('submit', async (event) => {
-    const title = event.target.input.value;
-    console.log(title);
-  });
+// document.querySelector('.conteiner')
+//   .addEventListener('submit', async (event) => {
+//     const title = event.target.input.value;
+//     console.log(title);
+//   });
