@@ -31,7 +31,7 @@ router.post('/register', async (req, res) => {
     // console.log(user);
     req.session.userId = user.id;
     // console.log(req.session);
-    res.redirect('/home');
+    res.redirect('/Home');
   }
 });
 
@@ -49,10 +49,13 @@ router.post('/login', async (req, res) => {
   if (existingUser && await bcrypt.compare(password, existingUser.password)) {
     // кладём id нового пользователя в хранилище сессии (логиним пользователя)
     req.session.userId = existingUser.id;
-    res.redirect('/home');
+    res.redirect('/Home');
   } else {
     res.send('Неверное имя пользователя или пароль.');
   }
 });
-
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
+});
 module.exports = router;
