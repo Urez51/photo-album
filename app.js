@@ -10,11 +10,17 @@ const mainRouter = require('./routes/views/main.routes');
 const todoRouter = require('./routes/views/tasks.routes');
 const todoApiRouter = require('./routes/api/tasks.routes');
 const authRouter = require('./routes/views/auth.routes');
+
+
+const photoRouter = require('./routes/views/photo.routes');
+const zipRouter = require('./routes/views/zip.routes');
+
 const albumRouter = require('./routes/views/album.routes');
 
 const homeRouter = require('./routes/views/home.router');
 
 const photoRouter = require('./routes/views/photo.routes');
+
 
 const app = express();
 
@@ -33,7 +39,7 @@ app.use('/api/tasks', todoApiRouter); // роутер списка задач (�
 app.use('/Home', homeRouter) // роутер домашней страницы
 //app.use('/album', albumRouter) eроутер на альбомную страницу 1 альбома для работы с альбомом
 app.use('/photo', photoRouter); // роутер для работы с 1 фотографией
-
+app.use('/zip', zipRouter);
 
 app.use((error, req, res, next) => {
   console.error('Произошла ошибка', error);
