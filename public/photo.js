@@ -13,19 +13,22 @@ document.querySelector('.photos')
     }
   });
 
-document.querySelector('.photos')
-  .addEventListener('click', async (event) => {
-    if (event.target.classList.contains('edit')) {
-      event.preventDefault();
-      const { href } = event.target;
-      
-      // const responce = await fetch(href, {
-      //   method: 'PUT',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({
-      //     title,
-      //   }),
-      // });
-      console.log(href);
-    }
+// document.querySelector('.photos')
+//   .addEventListener('click', async (event) => {
+//     if (event.target.classList.contains('edit')) {
+//       event.preventDefault();
+//       const { href } = event.target;
+//       const responce = await fetch(href, {
+//         method: 'GET',
+//       });
+//       const html = await responce.text();
+//       // event.target.closest();
+//       console.log(href);
+//     }
+//   });
+
+document.querySelector('.conteiner')
+  .addEventListener('submit', async (event) => {
+    const title = event.target.input.value;
+    console.log(title);
   });

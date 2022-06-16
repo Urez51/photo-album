@@ -13,11 +13,12 @@ const authRouter = require('./routes/views/auth.routes');
 const albumRouter = require('./routes/views/album.routes');
 // const homeRouter = require('./routes/views/home.routes');
 // const albumRouter = require('./routes/views/album.routes');
-// const photoRouter = require('./routes/views/photo.routes');
+ const photoRouter = require('./routes/views/photo.routes');
 
 const app = express();
 
 const { sequelize } = require('./db/models');
+const morgan = require('morgan');
 // функция настройки экспресса
 expressConfig(app);
 
@@ -27,9 +28,11 @@ app.use('/tasks', todoRouter); // роутер списка задач (все u
 app.use('/auth', authRouter);
 app.use('/album', albumRouter);
 app.use('/api/tasks', todoApiRouter); // роутер списка задач (все url начинаются с /tasks)
-// app.use('/Home', homeRouter) // роутер домашней страницы
-// app.use('/album', albumRouter) // роутер на альбомную страницу 1 альбома для работы с альбомом
-// app.use('/photo', photoRouter) // роутер для работы с 1 фотографией
+
+//app.use('/Home', homeRouter) // роутер домашней страницы
+//app.use('/album', albumRouter) // роутер на альбомную страницу 1 альбома для работы с альбомом
+app.use('/photo', photoRouter); // роутер для работы с 1 фотографией
+
 
 app.use((error, req, res, next) => {
   console.error('Произошла ошибка', error);
