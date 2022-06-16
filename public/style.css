@@ -16,5 +16,16 @@
   cursor: pointer;
 }
 
-.done-checkbox {
+.photos {
+  display: flex;
+  justify-content: space-around;
+}
+
+.photo-links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.delete {
+  color: red;
 }
