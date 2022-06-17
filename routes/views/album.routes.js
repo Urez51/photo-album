@@ -42,6 +42,7 @@ router.post('/edit/:photo_id', async (req, res) => {
 
   await photo.save();
   res.redirect(`/album/${photo.album_id}`);
+  //
 });
 
 module.exports = router;
