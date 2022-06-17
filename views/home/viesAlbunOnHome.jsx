@@ -13,7 +13,7 @@ module.exports = function viesAlbunOnHome({ user, albumsUser, photoInTen }) {
               <p className="card-text">{album.body}</p>
             </div>
             <div className="card-body">
-              <a href={`/albums/${album.id}`} className="card-link">Открыть {album.title}</a>
+              <a href={`/album/${album.id}`} className="card-link">Открыть {album.title}</a>
             </div>
           </div>
         ))}
@@ -23,7 +23,7 @@ module.exports = function viesAlbunOnHome({ user, albumsUser, photoInTen }) {
           <div className="carousel-inner">
             {album.map((photo, i) => (
               <div key={i} className="carousel-item active kek">
-                <img src={photo.url} className="d-block w-100 pricol" alt="..." />
+                <img src={photo.url.slice(6)} className="d-block w-100 pricol" alt="..." /> 
               </div>
             ))}
           </div>
@@ -41,3 +41,4 @@ module.exports = function viesAlbunOnHome({ user, albumsUser, photoInTen }) {
     </LayoutHome>
   );
 };
+// {photo.url}

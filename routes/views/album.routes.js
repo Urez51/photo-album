@@ -10,6 +10,7 @@ const EditPhoto = require('../../views/EditPhoto');
 router.get('/:album_id', async (req, res) => {
   // const id = req.session.userId;
   const alb = req.params.album_id;
+  console.log(alb);
   const albumName = await Album.findOne({ where: { id: alb }, raw: true });
   const photos = await Photo.findAll({ where: { album_id: alb }, raw: true });
   const element = React.createElement(AlbumView, { photos, albumName });
