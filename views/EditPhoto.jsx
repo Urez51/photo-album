@@ -1,9 +1,9 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function EditEntry({ photo }) {
+module.exports = function EditEntry({ photo, user }) {
   return (
-    <Layout>
+    <Layout user={user}>
       <form action={`/album/edit/${photo.id}`} method="POST">
         <div className="edit">
           <h1>Edit photo</h1>

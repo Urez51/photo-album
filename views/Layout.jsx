@@ -1,6 +1,6 @@
 const React = require('react');
 
-function Layout({ children }) {
+function Layout({ children, user }) {
   return (
     <html lang="ru">
       <head>
@@ -21,6 +21,32 @@ function Layout({ children }) {
 
       </head>
       <body id="page-top">
+        { user && (
+        <nav className="navbar navbar-expand-lg bg-light">
+          <div className="container-fluid">
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div className="navbar-nav">
+                <a href="/auth/logout" className="nav-link" tabIndex="-1" role="button" aria-disabled="true">logout</a>
+                <p className="nav-link">{user.name}</p>
+                <a href="/album" className="nav-link">New Album</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        )} {!user && (
+        <nav className="navbar navbar-expand-lg bg-light">
+          <div className="container-fluid">
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div className="navbar-nav">
+                <a href="/auth/login" className="nav-link" tabIndex="-1" role="button" aria-disabled="true">Login</a>
+                <a href="/" className="nav-link" tabIndex="-1" role="button" aria-disabled="true">Start Page</a>
+
+                <a href="/auth/register" className="nav-link">Registration</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        )}
         <header className="masthead d-flex align-items-center">
           <div className="container px-4 px-lg-5 text-center">
             {children}

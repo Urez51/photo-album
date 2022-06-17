@@ -1,9 +1,9 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-function AlbumView({ photos, albumName }) {
+function AlbumView({ photos, albumName, user }) {
   return (
-    <Layout>
+    <Layout user={user}>
       {/* // <form enctype="multipart/form-data" method="post" action="/photo">
   //  <p>Загрузите ваши фотографии на сервер</p>
   //  <p><input type="file" name="foto" multiple accept="image/*,image/jpeg"/>

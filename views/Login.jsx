@@ -1,9 +1,9 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-function Login() {
+function Login({ user }) {
   return (
-    <Layout>
+    <Layout user={user}>
       <form method="POST" action="/auth/login">
         <div className="mb-3">
           <label htmlFor="name-input" className="form-label">Email</label>
