@@ -22,7 +22,6 @@ homeRouter.get('/', async (req, res) => {
       order: [
         ['createdAt', 'DESC'],
       ],
-      limit: 10,
     });
     // console.log(allAlbum);
     const allPhotos = await Photo.findAll({ raw: true });

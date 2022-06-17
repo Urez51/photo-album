@@ -22,7 +22,7 @@ function AlbumView({ photos, albumName }) {
       <ul className="photos">
         {photos.map((el) => (
           <div className="photo" key={el.id}>
-            <img src={el.url} alt={el.title} width="200" height="200" />
+            <img src={el.url.slice(6)} alt="" width="200" height="200" />
             <div className="photo-title">{el.title}</div>
             <ul className="photo-links">
               <li className="photo-link"><a className="edit" href={`/album/edit/${el.id}`}>edit</a></li>

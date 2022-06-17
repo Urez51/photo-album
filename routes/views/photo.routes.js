@@ -18,6 +18,7 @@ router.post('/:id', fileMiddleware.single('foto'), async (req, res) => {
         album_id: req.params.id,
       });
       res.status(200);
+      res.redirect(`/album/${req.params.id}`);
     }
   } catch (err) {
     console.log(err);
