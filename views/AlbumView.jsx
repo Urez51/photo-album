@@ -1,9 +1,9 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-function AlbumView({ photos, albumName }) {
+function AlbumView({ photos, albumName, user }) {
   return (
-    <Layout>
+    <Layout user={user}>
       {/* // <form enctype="multipart/form-data" method="post" action="/photo">
   //  <p>Загрузите ваши фотографии на сервер</p>
   //  <p><input type="file" name="foto" multiple accept="image/*,image/jpeg"/>
@@ -48,7 +48,7 @@ function AlbumView({ photos, albumName }) {
               <div className="photo-title">{el.title}</div>
               <ul className="photo-links">
                 <li className="photo-link"><a className="edit" href={`/album/edit/${el.id}`}>edit</a></li>
-                <li className="photo-link"><a className="delete" href={`/album/delete/${el.id}`}>delete</a></li>
+                <li className="photo-link"><a className="delete" href={`${el.id}`}>delete</a></li>
               </ul>
             </div>
           ))}

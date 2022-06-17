@@ -32,7 +32,9 @@ function LayoutHome({ user, children }) {
             </div>
           </div>
         </nav>
+
         {children}
+
       </body>
     </html>
   );

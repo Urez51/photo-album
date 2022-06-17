@@ -21,7 +21,7 @@ homeRouter.get('/', async (req, res) => {
       where: { privat: true },
       order: [
         ['createdAt', 'DESC'],
-      ],
+      ],//limit offset
     });
     // console.log(allAlbum);
     const allPhotos = await Photo.findAll({ raw: true });
@@ -38,4 +38,5 @@ homeRouter.get('/', async (req, res) => {
     res.redirect('/');
   }
 });
+
 module.exports = homeRouter;
