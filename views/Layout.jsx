@@ -27,7 +27,7 @@ function Layout({ children, user }) {
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav">
                 <a href="/auth/logout" className="nav-link" tabIndex="-1" role="button" aria-disabled="true">logout</a>
-                <p className="nav-link">{user.name}</p>
+                <a href="/Home" className="nav-link">{user.name}</a>
                 <a href="/album" className="nav-link">New Album</a>
               </div>
             </div>

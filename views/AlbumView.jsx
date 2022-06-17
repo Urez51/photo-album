@@ -26,7 +26,7 @@ function AlbumView({ photos, albumName, user }) {
             <div className="photo-title">{el.title}</div>
             <ul className="photo-links">
               <li className="photo-link"><a className="edit" href={`/album/edit/${el.id}`}>edit</a></li>
-              <li className="photo-link"><a className="delete" href={`/album/delete/${el.id}`}>delete</a></li>
+              <li className="photo-link"><a className="delete" href={`/album/${el.id}`}>delete</a></li>
             </ul>
           </div>
         ))}

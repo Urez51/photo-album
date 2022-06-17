@@ -3,6 +3,7 @@ document.querySelector('.photos').addEventListener('click', async (event) => {
     event.preventDefault();
     // console.log(event.target);
     const { href } = event.target;
+    console.log(href)
     const responce = await fetch(href, {
       method: 'DELETE',
     });

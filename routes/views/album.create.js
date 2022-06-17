@@ -2,12 +2,15 @@ const router = require('express').Router();
 const ReactDOMServer = require('react-dom/server');
 const React = require('react');
 
-const { Album } = require('../../db/models');
+const { Album, User } = require('../../db/models');
 
 const AddAlbumView = require('../../views/AddAlbum');
 
 router.get('/', async (req, res) => {
-  const element = React.createElement(AddAlbumView);
+  const id = req.session.userId;
+    // console.log(id);
+    const user = await User.findOne({ where: id });
+  const element = React.createElement(AddAlbumView,{user});
   const html = ReactDOMServer.renderToStaticMarkup(element);
   res.write('<!DOCTYPE html>');
   res.end(html);
