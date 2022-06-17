@@ -27,12 +27,14 @@ function LayoutHome({ user, children }) {
               <div className="navbar-nav">
                 <a href="/auth/logout" className="nav-link" tabIndex="-1" role="button" aria-disabled="true">logout</a>
                 <p className="nav-link">{user.name}</p>
-                <a href="/album" className="nav-link">New Album</a>
+                <a href="/album/create" className="nav-link">New Album</a>
               </div>
             </div>
           </div>
         </nav>
+
         {children}
+
       </body>
     </html>
   );

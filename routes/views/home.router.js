@@ -38,4 +38,5 @@ homeRouter.get('/', async (req, res) => {
     res.redirect('/');
   }
 });
+
 module.exports = homeRouter;
