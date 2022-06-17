@@ -1,28 +1,20 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-function AlbumAdd({ photos, albumName }) {
+function AlbumAdd() {
   return (
     <Layout>
       <form method="POST" action="/:album_id/add">
-        <h1>{albumName.title}</h1>
-        <input type="file" className="btn btn-primary" name="input-foto" value="Загрузить" />
-        <div className="mb-3" />
-        <ul className="photos">
-          {photos.map((el) => (
-            <div className="photo" key={el.id}>
-              <img src={el.url} alt={el.title} width="200" height="200" />
-              <div className="photo-title">{el.title}</div>
-              <ul className="photo-links">
-                <li className="photo-link"><a className="edit" href={`/edit/${el.id}`}>edit</a></li>
-                <li className="photo-link"><a className="delete" href={`${el.id}`}>delete</a></li>
-              </ul>
-            </div>
-          ))}
-        </ul>
+        <h1>Create new album</h1>
+        <label htmlFor="">Album title</label>
+        <input type="text" className="btn btn-primary" name="create-title" />
+        <label htmlFor="">Album description</label>
+        <input type="text" className="btn btn-primary" name="create-body" />
+        <label htmlFor="">Private album</label>
+        <input type="checkbox" className="btn btn-primary" name="create-private" />
       </form>
     </Layout>
   );
 }
 
-module.exports = AlbumView;
+module.exports = AlbumAdd;

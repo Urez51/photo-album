@@ -6,6 +6,7 @@ const { Album, Photo } = require('../../db/models');
 
 const AlbumView = require('../../views/AlbumView');
 const EditPhoto = require('../../views/EditPhoto');
+const AlbumAdd = require('../../views/AlbumAdd');
 
 router.get('/:album_id', async (req, res) => {
   // const id = req.session.userId;
@@ -29,6 +30,17 @@ router.get('/edit/:id', async (req, res) => {
   const element = React.createElement(EditPhoto, { photo });
   const html = ReactDOMServer.renderToStaticMarkup(element);
   res.send(html);
+});
+
+router.post('/edit/:photo_id', async (req, res) => {
+  const value = req.body.inputChange; // значение в инпуте
+  const photoId = req.params.photo_id;
+  const photo = await Photo.findOne({ where: { id: photoId } });
+
+  photo.title = value;
+
+  await photo.save();
+  res.redirect(`/album/${photo.album_id}`);
 });
 
 module.exports = router;

@@ -14,7 +14,7 @@ function AlbumView({ photos, albumName }) {
               <img src={el.url} alt={el.title} width="200" height="200" />
               <div className="photo-title">{el.title}</div>
               <ul className="photo-links">
-                <li className="photo-link"><a className="edit" href={`/edit/${el.id}`}>edit</a></li>
+                <li className="photo-link"><a className="edit" href={`/album/edit/${el.id}`}>edit</a></li>
                 <li className="photo-link"><a className="delete" href={`${el.id}`}>delete</a></li>
               </ul>
             </div>

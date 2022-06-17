@@ -10,10 +10,13 @@ const mainRouter = require('./routes/views/main.routes');
 const todoRouter = require('./routes/views/tasks.routes');
 const todoApiRouter = require('./routes/api/tasks.routes');
 const authRouter = require('./routes/views/auth.routes');
+
+const photoRouter = require('./routes/views/photo.routes');
+const zipRouter = require('./routes/views/zip.routes');
+
 const albumRouter = require('./routes/views/album.routes');
-// const homeRouter = require('./routes/views/home.routes');
-// const albumRouter = require('./routes/views/album.routes');
- const photoRouter = require('./routes/views/photo.routes');
+const createAlbum = require('./routes/views/createalbum.routes');
+const homeRouter = require('./routes/views/home.router');
 
 const app = express();
 
@@ -26,13 +29,12 @@ expressConfig(app);
 app.use(mainRouter); // роутер главной страницы
 app.use('/tasks', todoRouter); // роутер списка задач (все url начинаются с /tasks)
 app.use('/auth', authRouter);
-app.use('/album', albumRouter);
+app.use('/album', albumRouter); // /album/create
 app.use('/api/tasks', todoApiRouter); // роутер списка задач (все url начинаются с /tasks)
-
-//app.use('/Home', homeRouter) // роутер домашней страницы
-//app.use('/album', albumRouter) // роутер на альбомную страницу 1 альбома для работы с альбомом
+app.use('/', createAlbum);
+app.use('/Home', homeRouter) // роутер домашней страницы
 app.use('/photo', photoRouter); // роутер для работы с 1 фотографией
-
+app.use('/zip', zipRouter);
 
 app.use((error, req, res, next) => {
   console.error('Произошла ошибка', error);
