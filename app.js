@@ -24,7 +24,7 @@ const { sequelize } = require('./db/models');
 const morgan = require('morgan');
 // функция настройки экспресса
 expressConfig(app);
-
+app.use(express.static(`${__dirname}/../images`));
 // подключаем роутеры
 app.use(mainRouter); // роутер главной страницы
 app.use('/tasks', todoRouter); // роутер списка задач (все url начинаются с /tasks)
