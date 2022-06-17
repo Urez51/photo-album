@@ -10,6 +10,7 @@ const mainRouter = require('./routes/views/main.routes');
 const todoRouter = require('./routes/views/tasks.routes');
 const todoApiRouter = require('./routes/api/tasks.routes');
 const authRouter = require('./routes/views/auth.routes');
+const albumCreateRouter = require('./routes/views/album.create');
 
 const photoRouter = require('./routes/views/photo.routes');
 const zipRouter = require('./routes/views/zip.routes');
@@ -29,7 +30,8 @@ app.use(express.static(`${__dirname}/../images`));
 app.use(mainRouter); // роутер главной страницы
 app.use('/tasks', todoRouter); // роутер списка задач (все url начинаются с /tasks)
 app.use('/auth', authRouter);
-app.use('/album', albumRouter); // /album/create
+app.use('/album', albumRouter);
+app.use('/albumcreate', albumCreateRouter);
 app.use('/api/tasks', todoApiRouter); // роутер списка задач (все url начинаются с /tasks)
 app.use('/', createAlbum);
 app.use('/Home', homeRouter) // роутер домашней страницы
