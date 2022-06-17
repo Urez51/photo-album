@@ -23,7 +23,10 @@ router.get('/:album_id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  await Photo.destroy({ where: { id: req.params.id } });
+   const photo = await Photo.findOne({ where: { id: req.params.id } });
+   console.log(photo)
+  await photo.destroy();
+
   res.send('this photo has deleted');
 });
 

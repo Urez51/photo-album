@@ -23,10 +23,10 @@ homeRouter.get('/', async (req, res) => {
         ['createdAt', 'DESC'],
       ],//limit offset
     });
-    // console.log(allAlbum);
     const allPhotos = await Photo.findAll({ raw: true });
-    const photoInTen = allAlbum.map((album) => allPhotos.filter((photo) => album.id === photo.album_id));
-    console.log(photoInTen);
+    const photoNON = allAlbum.map((album) => allPhotos.filter((photo) => album.id === photo.album_id));
+    const photoInTen = photoNON.filter((el)=>el.length!==0)
+    // console.log(photoInTen);
     // const photoInAlbum = await albums.map(async (album) => await Photo.findOne({ where: { album_id: album.id } }));
     // console.log(photoInAlbum);
     const regForm = React.createElement(viesAlbunOnHome, { user, albumsUser, photoInTen });

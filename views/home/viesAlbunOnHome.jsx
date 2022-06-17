@@ -23,7 +23,8 @@ module.exports = function viesAlbunOnHome({ user, albumsUser, photoInTen }) {
           <div className="carousel-inner">
             {album.map((photo, i) => (
               <div key={i} className="carousel-item active kek">
-                <img src={photo.url.slice(6)} className="d-block w-100 pricol" alt="..." /> 
+                <img src={photo.url.slice(6)} className="d-block w-100 pricol" alt="..." />
+                <div className="op">{photo.title}</div>
               </div>
             ))}
           </div>
