@@ -1,3 +1,4 @@
+require('dotenv').config();
 // не забудь установить babel:
 // npm i @babel/core @babel/preset - env @babel/preset-react @babel/register
 // также не забудь положить файл .babelrc в корень проекта
