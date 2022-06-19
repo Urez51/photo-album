@@ -10,10 +10,14 @@ function Register() {
           <input type="text" className="form-control" id="name-input" name="name" />
         </div>
         <div className="mb-3">
+          <label htmlFor="exampleInputPassword1" className="form-label">Email</label>
+          <input type="text" className="form-control" id="exampleInputPassword1" name="mail" />
+        </div>
+        <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
           <input type="password" className="form-control" id="exampleInputPassword1" name="password" />
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Registration</button>
       </form>
     </Layout>
   );
