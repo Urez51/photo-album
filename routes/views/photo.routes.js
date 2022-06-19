@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const { Router } = require('express');
 const fileMiddleware = require('../../middlewares/file');
 const AddPhoto = require('../../views/AddPhoto');
