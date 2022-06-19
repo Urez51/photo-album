@@ -1,23 +1,15 @@
 require('dotenv').config();
-// не забудь установить babel:
-// npm i @babel/core @babel/preset - env @babel/preset-react @babel/register
-// также не забудь положить файл .babelrc в корень проекта
 require('@babel/register');
 const express = require('express');
 const expressConfig = require('./config/express');
 
-// импортируем роутеры (там лежат наши ручки)
+// импортируем роутеры 
 const mainRouter = require('./routes/views/main.routes');
-const todoRouter = require('./routes/views/tasks.routes');
-const todoApiRouter = require('./routes/api/tasks.routes');
 const authRouter = require('./routes/views/auth.routes');
 const albumCreateRouter = require('./routes/views/album.create');
-
 const photoRouter = require('./routes/views/photo.routes');
 const zipRouter = require('./routes/views/zip.routes');
-
 const albumRouter = require('./routes/views/album.routes');
-const createAlbum = require('./routes/views/createalbum.routes');
 const homeRouter = require('./routes/views/home.router');
 
 const app = express();
@@ -29,12 +21,9 @@ expressConfig(app);
 app.use(express.static(`${__dirname}/../images`));
 // подключаем роутеры
 app.use(mainRouter); // роутер главной страницы
-app.use('/tasks', todoRouter); // роутер списка задач (все url начинаются с /tasks)
 app.use('/auth', authRouter);
 app.use('/album', albumRouter);
 app.use('/albumcreate', albumCreateRouter);
-app.use('/api/tasks', todoApiRouter); // роутер списка задач (все url начинаются с /tasks)
-app.use('/', createAlbum);
 app.use('/Home', homeRouter) // роутер домашней страницы
 app.use('/photo', photoRouter); // роутер для работы с 1 фотографией
 app.use('/zip', zipRouter);
